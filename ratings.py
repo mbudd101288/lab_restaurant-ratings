@@ -19,25 +19,27 @@ def restaurant_rating(file):
         rating = int(line[1])    
         
         restaurant_dict[restaurant] = rating 
-        sorted_rest_ratings= {}
-    # print(restaurant_dict)
 
-    sorted_rest_ratings = sorted(restaurant_dict.items())
+        sorted_restaurant = sorted(restaurant_dict)
 
+    # print(sorted_restaurant)
 
-    print(f"{(sorted_rest_ratings[0])} is rated {(sorted_rest_ratings[1])}.")
+    for word in sorted_restaurant:
+        if word in restaurant_dict:
+            rest_s = word
+            
+            rate_s = restaurant_dict[word]
+            print(f"{rest_s} is rated {rate_s}")
+
+    for restaurant in restaurant_dict:
+        user_rest_choice = input("Pick a restaurant: ")
+        user_rest_rate = int(input("Give it a rating from 1 to 5: "))
+        
+        if user_rest_choice not in restaurant_dict:
+            restaurant_dict[user_rest_choice] = user_rest_rate
+            # Not sure how to make this work
   
-        #restaurant_rating= {}
-
-    # line.sort()
-        # print(line)
-#sort each line
-# we take each restaurant name and rate
-# "restaurant nam is rated "rate"
-#['Jellied Eel Shop', '3'] each item index [0] we just gonna sort
-#  for word in word_count:
- #       print(word, word_count[word]) 
-
+    
 
 
 restaurant_rating("scores.txt")
